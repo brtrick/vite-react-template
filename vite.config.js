@@ -4,9 +4,14 @@ import eslint from 'vite-plugin-eslint'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), eslint({lintOnStart: true, failOnError: false})],
+  plugins: [
+    react(),
+    eslint({
+      lintOnStart: true,
+      failOnError: process.env === "PRODUCTION" ? true : false
+    })
+  ],
   server: {
-    port: 3000,
     open: true
   }
 })
